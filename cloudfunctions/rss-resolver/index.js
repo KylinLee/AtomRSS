@@ -15,7 +15,6 @@ function parseImage(el, buffer) {
             parseImage(el[key], buffer)
         }
     }
-    console.log(buffer)
 }
 
 exports.main = async (props, context) => {
@@ -32,20 +31,34 @@ exports.main = async (props, context) => {
     })
     const source = parser.parse(xml)
     console.log(source)
-    const imageArr = []
+
     const postChannel = source["rss"]["channel"]["title"]
     for (item of source["rss"]["channel"]["item"]) {
+        const imageArr = []
         let postTitle = item["title"]
         let pubDate = item["pubDate"]
         let linkKey = item["link"]
         let description = item["description"]
         let content = item["content"] || item["content:encoded"] || description
         content = parser.parse(content, { ignoreAttributes: false })
-        console.log(typeof content)
         parseImage(content, imageArr)
+        db.collection("RSS_SOURCE").add({
+            data: {
+                _id: item["link"],
+                post_channel: source["rss"]["channel"]["title"],
+                post_title: item["title"],
+                pub_data: item["pubDate"],
+                description: description.slice(3, 100),
+                content: content,
+                img_links: imageArr,
+                insert_date: db.serverDate()
+            }
+        }).then((res) => {
+            console.log(res)
+        }).catch((err) => {
+            console.error(err)
+        })
     }
-
-    console.log(imageArr)
 
     // const img = await axios.get("https://img.ithome.com/newsuploadfiles/2020/8/20200817_112229_307.jpeg", {
     //     responseType: 'arraybuffer'
