@@ -4,6 +4,7 @@ const parser = require('fast-xml-parser');
 
 cloud.init({
     env: "inner-test-m2c3m"
+    // env: cloud.DYNAMIC_CURRENT_ENV
 })
 const db = cloud.database()
 
@@ -32,46 +33,49 @@ exports.main = async (props, context) => {
     const source = parser.parse(xml)
     console.log(source)
 
-    const postChannel = source["rss"]["channel"]["title"]
     for (item of source["rss"]["channel"]["item"]) {
         const imageArr = []
-        let postTitle = item["title"]
-        let pubDate = item["pubDate"]
-        let linkKey = item["link"]
         let description = item["description"]
         let content = item["content"] || item["content:encoded"] || description
         content = parser.parse(content, { ignoreAttributes: false })
         parseImage(content, imageArr)
-        db.collection("RSS_SOURCE").add({
-            data: {
-                _id: item["link"],
-                post_channel: source["rss"]["channel"]["title"],
-                post_title: item["title"],
-                pub_data: item["pubDate"],
-                description: description.slice(3, 100),
-                content: content,
-                img_links: imageArr,
-                insert_date: db.serverDate()
+        try {
+            await db.collection("RSS_SOURCE").add({
+                data: {
+                    _id: item["link"],
+                    post_channel: source["rss"]["channel"]["title"],
+                    post_title: item["title"],
+                    pub_data: item["pubDate"],
+                    description: description.slice(3, 100),
+                    content: content,
+                    img_links: imageArr,
+                    insert_date: db.serverDate()
+                }
+            })
+        } catch (err) {
+            // console.log(err)
+            break
+        }
+        const linkRenamer = /[\/:]/g
+        for (let link of imageArr) {
+            let img;
+            try {
+                img = await axios.get(link, { responseType: "arraybuffer" })
+            } catch (err) {
+                break
             }
-        }).then((res) => {
-            console.log(res)
-        }).catch((err) => {
-            console.error(err)
-        })
+            const fileName = link.replace(linkRenamer, "")
+            await cloud.uploadFile({
+                cloudPath: fileName,
+                fileContent: img.data
+            }).then((res) => {
+                console.warn(res)
+            })
+        }
     }
 
-    // const img = await axios.get("https://img.ithome.com/newsuploadfiles/2020/8/20200817_112229_307.jpeg", {
-    //     responseType: 'arraybuffer'
-    // }).then((res) => {
-    //     return res.data
-    // })
 
-    // await cloud.uploadFile({
-    //     cloudPath: "20200817_112229_307.jpeg",
-    //     fileContent: img
-    // }).then((res) => {
-    //     console.warn(res)
-    // })
+
 
 
     return {
