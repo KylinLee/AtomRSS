@@ -1,0 +1,4 @@
+<image src="/images/profile-bg.jpeg" style="width:100%;height:486rpx"></image>
+<view class="avatar">
+	<view class="cu-avatar xl round bg-black"><text class="avatar-text">Atom</text></view>
+</view>

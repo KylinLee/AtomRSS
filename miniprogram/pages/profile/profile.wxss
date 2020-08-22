@@ -1,0 +1,7 @@
+.avatar{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    position: relative;
+    top: -50px;
+}
