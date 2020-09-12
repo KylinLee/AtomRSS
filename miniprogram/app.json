@@ -1,15 +1,15 @@
 {
     "pages": [
-        "pages/profile/profile",
         "pages/index/index",
-        "pages/playground/playground"
+        "pages/subscribe/subscribe",
+        "pages/profile/profile"
     ],
     "window": {
         "navigationBarTitleText": "Atom RSS",
         "navigationStyle": "custom"
     },
     "usingComponents": {
-        "navbar":"/components/navbar/navbar"
+        "navbar": "/components/navbar/navbar"
     },
     "sitemapLocation": "sitemap.json",
     "style": "v2"

@@ -1,4 +1,30 @@
 <image src="/images/profile-bg.jpeg" style="width:100%;height:486rpx"></image>
-<view class="avatar">
-	<view class="cu-avatar xl round bg-black"><text class="avatar-text">Atom</text></view>
+<view class="profile">
+	<view class="avatar">
+		<image class="avatar-img" wx:if="{{avatarUrl}}" src="{{avatarUrl}}" width="100%"></image>
+		<view wx:else>
+			<view class="bg-black">
+				<text class="avatar-inner-text">AtomRSS</text>
+			</view>
+		</view>
+	</view>
+	<view class="user-name text-center">{{nickName}}</view>
+	<view class="menu cu-list card-menu margin-top">
+		<view class="cu-item arrow">
+			<view class="content">
+				<text>我的订阅</text>
+			</view>
+		</view>
+		<view class="cu-item">
+			<view class="content">
+				<text>下次提醒</text>
+			</view>
+			<view class="action">
+				<switch class="sm" bindchange="alert"></switch>
+			</view>
+		</view>
+	</view>
+	<view class="login-btn">
+		<button class="cu-btn round bg-gradual-green lg shadow" open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button>
+	</view>
 </view>

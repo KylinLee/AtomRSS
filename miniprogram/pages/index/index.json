@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "profile": "/pages/profile/profile",
+    "center": "/pages/subscribe/subscribe"
+  }
 }

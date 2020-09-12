@@ -74,10 +74,6 @@ exports.main = async (props, context) => {
         }
     }
 
-
-
-
-
     return {
         props,
         openid: wxContext.OPENID,

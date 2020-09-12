@@ -1,65 +1,53 @@
 // miniprogram/pages/profile.js
 Page({
+    alert() {
 
-    /**
-     * 页面的初始数据
-     */
+    },
+    getUserInfo(userInfo) {
+        const that = this
+        const { nickName, avatarUrl } = userInfo.detail.userInfo
+        wx.cloud.callFunction({
+            name: "login",
+            data: {
+                nickName,
+                avatarUrl
+            }
+        }).then((res) => {
+            console.log(res)
+            that.setData({
+                nickName: res["result"]["nickName"],
+                avatarUrl: res["result"]["avatarUrl"]
+            })
+        })
+    },
     data: {
-
+        nickName: "欢迎",
+        avatarUrl: ""
     },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
     onLoad: function (options) {
-
+        wx.checkSession({
+          success: (res) => {console.log(res)},
+          fail: (res)=>{console.log(res)}
+        })
     },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
     onReady: function () {
 
     },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
     onShow: function () {
 
     },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
     onHide: function () {
 
     },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
     onUnload: function () {
 
     },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
     onPullDownRefresh: function () {
 
     },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
     onReachBottom: function () {
 
     },
-
-    /**
-     * 用户点击右上角分享
-     */
     onShareAppMessage: function () {
 
     }
