@@ -5,26 +5,20 @@
 <view class="cu-bar tabbar bg-white shadow foot">
 	<view class="action" bindtap="NavChange" data-cur="basics">
 		<view class='cuIcon-cu-image'>
-			
+
 		</view>
-		<view class="{{PageCur=='basics'?'text-green':'text-gray'}}">元素</view>
+		<view class="{{PageCur=='basics'?'text-green':'text-gray'}}">订阅内容</view>
 	</view>
-	<view class="action" bindtap="NavChange" data-cur="component">
+	<view class="action" bindtap="NavChange" data-cur="center">
 		<view class='cuIcon-cu-image'>
-			<text class="cuIcon-profilefill lg text-blue"></text>
+
 		</view>
-		<view class="{{PageCur=='component'?'text-green':'text-gray'}}">组件</view>
+		<view class="{{PageCur=='about'?'text-green':'text-gray'}}">订阅中心</view>
 	</view>
-	<view class="action" bindtap="NavChange" data-cur="plugin">
+	<view class="action" bindtap="NavChange" data-cur="profile">
 		<view class='cuIcon-cu-image'>
-			
+			<text class="cuIcon-profilefill lg {{PageCur == 'profile'?'text-blue':'text-gray'}}"></text>
 		</view>
-		<view class="{{PageCur=='plugin'?'text-green':'text-gray'}}">扩展</view>
-	</view>
-	<view class="action" bindtap="NavChange" data-cur="about">
-		<view class='cuIcon-cu-image'>
-			
-		</view>
-		<view class="{{PageCur=='about'?'text-green':'text-gray'}}">关于</view>
+		<view class="{{PageCur=='component'?'text-green':'text-gray'}}">个人中心</view>
 	</view>
 </view>

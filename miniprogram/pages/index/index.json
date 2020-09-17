@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "profile": "/pages/profile/profile",
-    "center": "/pages/subscribe/subscribe"
+    "center": "/pages/subscribe/subscribe",
+    "readlist": "/pages/"
   }
 }
