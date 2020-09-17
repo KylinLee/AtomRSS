@@ -24,55 +24,63 @@ exports.main = async (props, context) => {
     //     // res.data 包含该记录的数据
     //     console.log(res.data)
     // })
-    const link = "https://www.ithome.com/rss/"
-    const xml = await axios.get(link).then((res) => {
-        return res.data
-    }).catch(err => {
-        console.err(err)
-    })
-    const source = parser.parse(xml)
-    console.log(source)
 
-    for (item of source["rss"]["channel"]["item"]) {
-        const imageArr = []
-        let description = item["description"]
-        let content = item["content"] || item["content:encoded"] || description
-        content = parser.parse(content, { ignoreAttributes: false })
-        parseImage(content, imageArr)
-        try {
-            await db.collection("RSS_SOURCE").add({
-                data: {
-                    _id: item["link"],
-                    post_channel: source["rss"]["channel"]["title"],
-                    post_title: item["title"],
-                    pub_data: item["pubDate"],
-                    description: description.slice(3, 100),
-                    content: content,
-                    img_links: imageArr,
-                    insert_date: db.serverDate()
-                }
-            })
-        } catch (err) {
-            // console.log(err)
-            break
-        }
-        const linkRenamer = /[\/:]/g
-        for (let link of imageArr) {
-            let img;
+    const links = await db.collection("SOURCE_LINK").get()
+    for (const { _id: link } of links) {
+        // 拉取xml，初级解析
+        const xml = await axios.get(link).then((res) => {
+            return res.data
+        }).catch(err => {
+            console.err(err)
+        })
+        const source = parser.parse(xml)
+        console.log(source)
+
+        // 抓取每篇文章、解析、并转存数据库
+        for (item of source["rss"]["channel"]["item"]) {
+            const imageArr = []
+            let description = item["description"]
+            let content = item["content"] || item["content:encoded"] || description
+            content = parser.parse(content, { ignoreAttributes: false })
+            parseImage(content, imageArr)
             try {
-                img = await axios.get(link, { responseType: "arraybuffer" })
+                await db.collection("RSS_SOURCE").add({
+                    data: {
+                        _id: item["link"],
+                        post_channel: source["rss"]["channel"]["title"],
+                        channel_link: xml.channel.link || link,
+                        post_title: item["title"],
+                        pub_data: item["pubDate"],
+                        description: description.slice(3, 100),
+                        content: content,
+                        img_links: imageArr,
+                        insert_date: db.serverDate()
+                    }
+                })
             } catch (err) {
+                // console.log(err)
                 break
             }
-            const fileName = link.replace(linkRenamer, "")
-            await cloud.uploadFile({
-                cloudPath: fileName,
-                fileContent: img.data
-            }).then((res) => {
-                console.warn(res)
-            })
+            // 获取每篇文章的图片，并拉取到服务器
+            const linkRenamer = /[\/:]/g
+            for (let link of imageArr) {
+                let img;
+                try {
+                    img = await axios.get(link, { responseType: "arraybuffer" })
+                } catch (err) {
+                    break
+                }
+                const fileName = link.replace(linkRenamer, "")
+                await cloud.uploadFile({
+                    cloudPath: fileName,
+                    fileContent: img.data
+                }).then((res) => {
+                    console.warn(res)
+                })
+            }
         }
     }
+
 
     return {
         props,

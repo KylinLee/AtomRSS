@@ -1,5 +1,5 @@
 <navbar bgColor="bg-gradual-blue" isBack="{{true}}">
-	<view slot="backText">返回</view>
+	<!-- <view slot="backText">返回</view> -->
 	<view slot="content">订阅广场</view>
 </navbar>
 

@@ -1,23 +1,23 @@
-<index wx:if="{{PageCur=='index'}}"></index>
+<readlist wx:if="{{PageCur=='readlist'}}"></readlist>
 <center wx:if="{{PageCur=='center'}}"></center>
 <profile wx:if="{{PageCur=='profile'}}"></profile>
 
 <view class="cu-bar tabbar bg-white shadow foot">
-	<view class="action" bindtap="NavChange" data-cur="basics">
+	<view class="action" bindtap="NavChange" data-cur="readlist">
 		<view class='cuIcon-cu-image'>
-
+			<text class="cuIcon-list lg {{PageCur == 'readlist'?'text-blue':'text-gray'}}"></text>
 		</view>
-		<view class="{{PageCur=='basics'?'text-green':'text-gray'}}">订阅内容</view>
+		<view class="{{PageCur=='readlist'?'text-blue':'text-gray'}}">订阅内容</view>
 	</view>
 	<view class="action" bindtap="NavChange" data-cur="center">
 		<view class='cuIcon-cu-image'>
-
+			<text class="cuIcon-shop lg {{PageCur == 'center'?'text-blue':'text-gray'}}"></text>
 		</view>
-		<view class="{{PageCur=='about'?'text-green':'text-gray'}}">订阅中心</view>
+		<view class="{{PageCur=='center'?'text-blue':'text-gray'}}">订阅中心</view>
 	</view>
 	<view class="action" bindtap="NavChange" data-cur="profile">
 		<view class='cuIcon-cu-image'>
-			<text class="cuIcon-profilefill lg {{PageCur == 'profile'?'text-blue':'text-gray'}}"></text>
+			<text class="cuIcon-profile lg {{PageCur == 'profile'?'text-blue':'text-gray'}}"></text>
 		</view>
 		<view class="{{PageCur=='component'?'text-green':'text-gray'}}">个人中心</view>
 	</view>
