@@ -12,7 +12,6 @@ Component({
                     this.setData({
                         ...data["data"]
                     })
-                    console.log(this.data)
                 }
             })
         }

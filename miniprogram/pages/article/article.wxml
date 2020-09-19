@@ -19,8 +19,8 @@
 
 <!-- 正文内容 -->
 <view class="content padding-lg bg-white">
-	<view wx:for="{{content}}" class="padding-tb-lg">
-		<text wx:if="{{wxs.isString(item)}}" class="text-lg" style="line-height: 46rpx">{{item}}</text>
-		<image wx:else src="{{item['@_src']}}"></image>
+	<view wx:for="{{content}}" class="padding-tb">
+		<text wx:if="{{wxs.isString(item)}}" class="text-lg text-center" style="line-height: 46rpx">{{item}}</text>
+		<image wx:else src="{{item['@_src']}}" mode="widthFix" lazy-load></image>
 	</view>
 </view>

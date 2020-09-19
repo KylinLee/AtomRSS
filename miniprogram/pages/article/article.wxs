@@ -1,7 +1,4 @@
 function isString(e) {
-    if (typeof e !== "string") {
-        console.log("e", JSON.stringify(e))
-    }
     return typeof e === "string"
 }
 

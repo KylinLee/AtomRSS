@@ -1,1 +1,4 @@
-/* miniprogram/pages/article/article.wxss */
+image{
+    display: block;
+    margin: 0 auto;
+}

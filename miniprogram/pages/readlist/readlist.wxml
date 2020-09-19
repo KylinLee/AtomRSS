@@ -8,9 +8,17 @@
 	<view slot="content">阅读列表</view>
 </navbar>
 
-<view wx:if="{{list.length === 0}}">
-    暂时没有订阅内容
+<view wx:if="{{list.length === 0}}" class="cu-modal show">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">提示</view>
+    </view>
+    <view class="padding-xl">
+      暂时没有需要阅读的内容
+    </view>
+  </view>
 </view>
+
 <view wx:else class="cu-card article no-card" style="margin-bottom:calc(100rpx + env(safe-area-inset-bottom) / 2);">
 	<view class="cu-item shadow move-item" wx:for="{{list}}" direction="horizontal" inertia out-of-bounds>
 	<navigator open-type="navigate" hover-class="none" url="/pages/article/article?source={{item._id}}">

@@ -31,7 +31,6 @@ Page({
             for (const key in originContent) {
                 content = content.concat(originContent[key])
             }
-            console.log(content)
             contentRes = [].concat(content.map((value) => {
                 R = []
                 return this.flat(value, R)

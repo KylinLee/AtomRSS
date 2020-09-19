@@ -42,8 +42,7 @@ exports.main = async (event, context) => {
         post_title: true,
         post_title: true,
         img_links: true
-    })
-    .orderBy("insert_date", "desc").get()
+    }).orderBy("insert_date", )
     console.log(res)
     return res
 }

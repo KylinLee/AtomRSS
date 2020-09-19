@@ -19,12 +19,15 @@ exports.main = async (event, context) => {
     console.log(event)
     const wxContext = cloud.getWXContext()
     let res;
+    const {avatarUrl, nickName} = event;
     try{
         res = await db.collection("USER").add({
         data: {
             _id: wxContext.OPENID,
-            ...event,
-            links: []
+            avatarUrl,
+            nickName,
+            links: [],
+            lastUpdate: db.serverDate()
         }
     }).then(()=>{
         return {...event}
