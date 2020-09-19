@@ -23,18 +23,27 @@ exports.main = async (event, context) => {
             return res["data"][0]
         })
     // 修改用户抓取时间
-    await db.collection("USER").where({
-        _id: user
-    }).update({
-        data: {
-            lastUpdate: db.serverDate()
-        }
-    })
+    // await db.collection("USER").where({
+    //     _id: user
+    // }).update({
+    //     data: {
+    //         lastUpdate: db.serverDate()
+    //     }
+    // })
     // 获取订阅内容
     const res = await db.collection("RSS_SOURCE").where({
         channel_link: _.in(userInfo["links"]),
         insert_date: _.gt(userInfo["lastUpdate"])
-    }).get()
+    }).field({
+        _id: true,
+        channel_link: true,
+        description: true,
+        post_channel: true,
+        post_title: true,
+        post_title: true,
+        img_links: true
+    })
+    .orderBy("insert_date", "desc").get()
     console.log(res)
     return res
 }

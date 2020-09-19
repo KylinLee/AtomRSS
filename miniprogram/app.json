@@ -3,7 +3,8 @@
         "pages/index/index",
         "pages/subscribe/subscribe",
         "pages/profile/profile",
-        "pages/readlist/readlist"
+        "pages/readlist/readlist",
+        "pages/article/article"
     ],
     "window": {
         "navigationBarTitleText": "Atom RSS",

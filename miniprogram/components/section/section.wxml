@@ -1,0 +1,4 @@
+<wxs src="./section.wxs" module="wxs" />
+
+<text wx:if="{{wxs.isString(content)}}">{{content}}</text>
+<image wx:else src="{{content['@_src']}}"></image>

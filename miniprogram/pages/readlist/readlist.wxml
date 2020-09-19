@@ -1,4 +1,4 @@
-<wxs src="./readlist.wxs" module="utils" />
+<wxs src="./readlist.wxs" module="wxs" />
 
 <navbar bgColor="bg-gradual-blue" isBack="{{true}}">
 	<view slot="backText">
@@ -11,13 +11,14 @@
 <view wx:if="{{list.length === 0}}">
     暂时没有订阅内容
 </view>
-<movable-area wx:else class="cu-card article no-card move-view">
-	<movable-view class="cu-item shadow move-item" wx:for="{{list}}" direction="horizontal" inertia out-of-bounds>
+<view wx:else class="cu-card article no-card" style="margin-bottom:calc(100rpx + env(safe-area-inset-bottom) / 2);">
+	<view class="cu-item shadow move-item" wx:for="{{list}}" direction="horizontal" inertia out-of-bounds>
+	<navigator open-type="navigate" hover-class="none" url="/pages/article/article?source={{item._id}}">
 		<view class="title">
 			<view class="text-cut">{{item.post_title}}</view>
 		</view>
 		<view class="content">
-			<image src="{{utils.getFileId(item['img_links'][0])}}" mode="aspectFill"></image>
+			<image src="{{wxs.getFileId(item['img_links'][0])}}" mode="aspectFill"></image>
 			<view class="desc">
 				<view class="text-content">{{item.description}}</view>
 				<view>
@@ -25,5 +26,26 @@
 				</view>
 			</view>
 		</view>
+		</navigator>
+	</view>
+</view>
+
+<!-- 
+<movable-area wx:else class="cu-card article no-card move-view">
+	<movable-view class="cu-item shadow move-item" wx:for="{{list}}" direction="horizontal" inertia out-of-bounds>
+	<navigator open-type="navigate" hover-class="none" url="/pages/article/article?source={{item._id}}">
+		<view class="title">
+			<view class="text-cut">{{item.post_title}}</view>
+		</view>
+		<view class="content">
+			<image src="{{wxs.getFileId(item['img_links'][0])}}" mode="aspectFill"></image>
+			<view class="desc">
+				<view class="text-content">{{item.description}}</view>
+				<view>
+					<view class="cu-tag bg-red light sm round">{{item.post_channel}}</view>
+				</view>
+			</view>
+		</view>
+		</navigator>
 	</movable-view>
-</movable-area>
+</movable-area> -->

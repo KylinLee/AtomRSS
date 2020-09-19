@@ -24,7 +24,7 @@
 			</view>
 		</view>
 	</view>
-	<view class="login-btn">
+	<view class="login-btn" wx:if="{{!avatarUrl}}">
 		<button class="cu-btn round bg-gradual-green lg shadow" open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button>
 	</view>
 </view>

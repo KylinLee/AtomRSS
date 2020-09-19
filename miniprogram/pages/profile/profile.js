@@ -3,7 +3,21 @@ Component({
     options: {
         addGlobalClass: true,
     },
-    methods:{
+    lifetimes: {
+        attached: function () {
+            wx.getStorage({
+                key: "userInfo",
+                success: (data) => {
+                    console.log(data)
+                    this.setData({
+                        ...data["data"]
+                    })
+                    console.log(this.data)
+                }
+            })
+        }
+    },
+    methods: {
         getUserInfo(userInfo) {
             const that = this
             const { nickName, avatarUrl } = userInfo.detail.userInfo
@@ -15,9 +29,13 @@ Component({
                 }
             }).then((res) => {
                 console.log(res)
-                that.setData({
+                this.setData({
                     nickName: res["result"]["nickName"],
                     avatarUrl: res["result"]["avatarUrl"]
+                })
+                wx.setStorage({
+                    data: that.data,
+                    key: "userInfo",
                 })
             })
         }

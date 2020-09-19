@@ -1,0 +1,26 @@
+<wxs src="./article.wxs" module="wxs" />
+
+<navbar bgColor="bg-gradual-blue" isBack="{{true}}">
+	<view slot="backText">
+		<text class="cuIcon-back"></text>
+		<text>返回</text>
+	</view>
+	<!-- <view slot="content">阅读列表</view> -->
+</navbar>
+
+<!-- 标题 -->
+<view class="cu-bar justify-center bg-white padding-tb">
+	<view class="action border-title">
+		<text class="text-xl text-bold">{{article.post_title}}</text>
+		<text class="bg-grey"></text>
+		<!-- 底部样式 last-child选择器-->
+	</view>
+</view>
+
+<!-- 正文内容 -->
+<view class="content padding-lg bg-white">
+	<view wx:for="{{content}}" class="padding-tb-lg">
+		<text wx:if="{{wxs.isString(item)}}" class="text-lg" style="line-height: 46rpx">{{item}}</text>
+		<image wx:else src="{{item['@_src']}}"></image>
+	</view>
+</view>
