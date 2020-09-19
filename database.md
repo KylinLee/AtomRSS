@@ -18,8 +18,8 @@
 
 | 字段 |  类型  |     说明     |
 | :--: | :----: | :----------: |
-| _id  | string | 订阅链接地址 |
-|      |        |              |
+| _id  | string |      ID      |
+| url  | string | 订阅链接地址 |
 |      |        |              |
 
 ## RSS_SOURCE
@@ -30,6 +30,7 @@ rss拉取的文章相关信息
 | :----------: | :------: | :--------------------------------------: |
 |     _id      |  string  | 该篇文章的源地址，防止重复插入同一篇文章 |
 | post_channel |  string  |                 发布频道                 |
+| channel_link |  string  |                 订阅链接                 |
 |  post_title  |  string  |                 文章标题                 |
 |   pub_data   |  string  |                 发布时间                 |
 | description  |  string  |                 文章摘要                 |

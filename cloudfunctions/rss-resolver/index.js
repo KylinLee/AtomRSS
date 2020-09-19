@@ -25,19 +25,22 @@ exports.main = async (props, context) => {
     //     console.log(res.data)
     // })
 
-    const links = await db.collection("SOURCE_LINK").get()
-    for (const { _id: link } of links) {
+    const linkRenamer = /[\/:]/g
+    const { data: links } = await db.collection("SOURCE_LINK").get()
+    for (const { url: link } of links) {
         // 拉取xml，初级解析
         const xml = await axios.get(link).then((res) => {
             return res.data
-        }).catch(err => {
-            console.err(err)
+        }).catch((err) => {
+            console.error(err)
         })
         const source = parser.parse(xml)
         console.log(source)
+        console.log(source["rss"]["channel"]["item"])
 
         // 抓取每篇文章、解析、并转存数据库
-        for (item of source["rss"]["channel"]["item"]) {
+        for (const item of source["rss"]["channel"]["item"]) {
+            console.log(item)
             const imageArr = []
             let description = item["description"]
             let content = item["content"] || item["content:encoded"] || description
@@ -46,9 +49,9 @@ exports.main = async (props, context) => {
             try {
                 await db.collection("RSS_SOURCE").add({
                     data: {
-                        _id: item["link"],
+                        _id: item["link"].replace(linkRenamer, ""),
                         post_channel: source["rss"]["channel"]["title"],
-                        channel_link: xml.channel.link || link,
+                        channel_link: link,
                         post_title: item["title"],
                         pub_data: item["pubDate"],
                         description: description.slice(3, 100),
@@ -62,7 +65,6 @@ exports.main = async (props, context) => {
                 break
             }
             // 获取每篇文章的图片，并拉取到服务器
-            const linkRenamer = /[\/:]/g
             for (let link of imageArr) {
                 let img;
                 try {
@@ -80,7 +82,6 @@ exports.main = async (props, context) => {
             }
         }
     }
-
 
     return {
         props,

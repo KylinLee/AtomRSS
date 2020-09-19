@@ -3,7 +3,6 @@ const cloud = require('wx-server-sdk')
 
 cloud.init({
     env: "inner-test-m2c3m"
-    // env: cloud.DYNAMIC_CURRENT_ENV
 })
 const db = cloud.database()
 const _ = db.command
