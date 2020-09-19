@@ -1,8 +1,5 @@
 const app = getApp();
 Component({
-    /**
-     * 组件的一些选项
-     */
     options: {
         addGlobalClass: true,
         multipleSlots: true

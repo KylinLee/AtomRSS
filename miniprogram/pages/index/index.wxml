@@ -1,7 +1,9 @@
+<!-- 将其他页面作为组件 -->
 <readlist wx:if="{{PageCur=='readlist'}}"></readlist>
 <center wx:if="{{PageCur=='center'}}"></center>
 <profile wx:if="{{PageCur=='profile'}}"></profile>
 
+<!-- 模拟底部tab -->
 <view class="cu-bar tabbar bg-white shadow foot">
 	<view class="action" bindtap="NavChange" data-cur="readlist">
 		<view class='cuIcon-cu-image'>

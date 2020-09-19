@@ -18,6 +18,7 @@ Page({
         return res = item
     },
     onLoad: function (options) {
+        // 根据路由传参请求数据
         wx.cloud.callFunction({
             name: "article",
             data: {
@@ -28,6 +29,7 @@ Page({
                 , content = []
                 , R = []
             const originContent = res.result.data[0]["content"]
+            // 由于小程序无法递归渲染,需要将将内容扁平化
             for (const key in originContent) {
                 content = content.concat(originContent[key])
             }

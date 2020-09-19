@@ -1,8 +1,10 @@
+<!-- 订阅中心页面组件 -->
+
 <navbar bgColor="bg-gradual-blue" isBack="{{true}}">
-	<!-- <view slot="backText">返回</view> -->
 	<view slot="content">订阅广场</view>
 </navbar>
 
+<!-- 订阅链接输入框 -->
 <view class="cu-bar bg-white search fixed" style="top:{{CustomBar}}px;">
 	<view class="search-form round">
 		<text class="cuIcon-search"></text>
@@ -10,14 +12,20 @@
 	</view>
 </view>
 
+<!-- 订阅链接列表 -->
 <view class="VerticalBox">
-	<scroll-view class="VerticalNav nav" scroll-y scroll-with-animation scroll-top="{{VerticalNavTop}}" style="height:calc(100vh - 100rpx - (100rpx + env(safe-area-inset-bottom) / 2) - {{CustomBar}}px)">
-		<view class="cu-item {{index==TabCur?'text-green cur':''}}" wx:for="{{list}}" wx:key bindtap='tabSelect' data-id="{{index}}">
+	<!-- 左侧 -->
+	<scroll-view class="VerticalNav nav" scroll-y scroll-with-animation scroll-top="{{VerticalNavTop}}"
+		style="height:calc(100vh - 100rpx - (100rpx + env(safe-area-inset-bottom) / 2) - {{CustomBar}}px)">
+		<view class="cu-item {{index==TabCur?'text-green cur':''}}" wx:for="{{list}}" wx:key bindtap='tabSelect'
+			data-id="{{index}}">
 			分类{{item.name}}
 		</view>
 	</scroll-view>
-
-	<scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:calc(100vh - 100rpx - (100rpx + env(safe-area-inset-bottom) / 2) - {{CustomBar}}px)" scroll-into-view="main-{{MainCur}}" bindscroll="">
+	<!-- 右侧 -->
+	<scroll-view class="VerticalMain" scroll-y scroll-with-animation
+		style="height:calc(100vh - 100rpx - (100rpx + env(safe-area-inset-bottom) / 2) - {{CustomBar}}px)"
+		scroll-into-view="main-{{MainCur}}" bindscroll="">
 		<view class="padding-top padding-lr" wx:for="{{list}}" wx:key id="main-{{index}}">
 			<view class='cu-bar solid-bottom bg-white'>
 				<view class='action'>
@@ -46,6 +54,7 @@
 	</view>
 </view>
 
+<!-- 弹出提示框 -->
 <view class="cu-modal bottom-modal {{submitTrigger?'show':''}}">
 	<view class="cu-dialog">
 		<view class="cu-bar bg-white">

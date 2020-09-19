@@ -1,39 +1,45 @@
+<!-- 渲染订阅文章列表 -->
+
 <wxs src="./readlist.wxs" module="wxs" />
 
 <navbar bgColor="bg-gradual-blue" isBack="{{true}}">
 	<view slot="backText">
-    <text class="cuIcon-roundcheck"></text>
-    全部已读
-    </view>
+		<text class="cuIcon-roundcheck"></text>
+		全部已读
+	</view>
 	<view slot="content">阅读列表</view>
 </navbar>
 
+<!-- 无内容占位 -->
+
 <view wx:if="{{list.length === 0}}" class="cu-modal show">
-  <view class="cu-dialog">
-    <view class="cu-bar bg-white justify-end">
-      <view class="content">提示</view>
-    </view>
-    <view class="padding-xl">
-      暂时没有需要阅读的内容
-    </view>
-  </view>
+	<view class="cu-dialog">
+		<view class="cu-bar bg-white justify-end">
+			<view class="content">提示</view>
+		</view>
+		<view class="padding-xl">
+			暂时没有需要阅读的内容
+		</view>
+	</view>
 </view>
 
+<!-- 列表渲染 -->
 <view wx:else class="cu-card article no-card" style="margin-bottom:calc(100rpx + env(safe-area-inset-bottom) / 2);">
 	<view class="cu-item shadow move-item" wx:for="{{list}}" direction="horizontal" inertia out-of-bounds>
-	<navigator open-type="navigate" hover-class="none" url="/pages/article/article?source={{item._id}}">
-		<view class="title">
-			<view class="text-cut">{{item.post_title}}</view>
-		</view>
-		<view class="content">
-			<image src="{{wxs.getFileId(item['img_links'][0])}}" mode="aspectFill"></image>
-			<view class="desc">
-				<view class="text-content">{{item.description}}</view>
-				<view>
-					<view class="cu-tag bg-red light sm round">{{item.post_channel}}</view>
+		<!-- 跳转路由并传参 -->
+		<navigator open-type="navigate" hover-class="none" url="/pages/article/article?source={{item._id}}">
+			<view class="title">
+				<view class="text-cut">{{item.post_title}}</view>
+			</view>
+			<view class="content">
+				<image src="{{wxs.getFileId(item['img_links'][0])}}" mode="aspectFill"></image>
+				<view class="desc">
+					<view class="text-content">{{item.description}}</view>
+					<view>
+						<view class="cu-tag bg-red light sm round">{{item.post_channel}}</view>
+					</view>
 				</view>
 			</view>
-		</view>
 		</navigator>
 	</view>
 </view>

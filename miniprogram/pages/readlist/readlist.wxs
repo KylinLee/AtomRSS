@@ -1,7 +1,8 @@
+// 生成图片 FileId
+
 function getFileId(link) {
     var reg = getRegExp("[\/:]", "g")
     link = link.replace(reg, "")
-    // console.log("cloud://inner-test-m2c3m.696e-inner-test-m2c3m-1302858957/"+ link)
     return "cloud://inner-test-m2c3m.696e-inner-test-m2c3m-1302858957/"+ link
 }
 

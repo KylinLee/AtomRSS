@@ -24,6 +24,8 @@
 			</view>
 		</view>
 	</view>
+
+	<!-- 判断登陆状态,是由隐藏 -->
 	<view class="login-btn" wx:if="{{!avatarUrl}}">
 		<button class="cu-btn round bg-gradual-green lg shadow" open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button>
 	</view>

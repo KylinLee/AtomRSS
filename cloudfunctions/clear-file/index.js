@@ -10,7 +10,8 @@ const db = cloud.database()
 exports.main = async (event, context) => {
     const { data } = await db.collection("RSS_SOURCE").get()
     const reg = /[\/\:\.]/g
-    for (let index = 0; index < data.length; index++) {
+    // 在删除RSS文章时同时删除该文章的图片，此方法由clear-db调用
+    for (let index = 0; index < event.links.length; index++) {
         const { img_links: files } = data[index]
         const fileList = files.map((value) => {
             value = value.replace(reg, "")
@@ -25,7 +26,5 @@ exports.main = async (event, context) => {
             console.error(err)
         })
     }
-    return {
-        event
-    }
+    return event
 }

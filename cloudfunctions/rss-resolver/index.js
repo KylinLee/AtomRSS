@@ -18,6 +18,7 @@ function parseImage(el, buffer) {
     }
 }
 
+// 该函数每5min调用一次，抓取订阅链接更新的所有文章
 exports.main = async (props, context) => {
     const wxContext = cloud.getWXContext()
     // const RSS_SOURCE = db.collection('RSS_SOURCE').get().then(res => {

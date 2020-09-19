@@ -10,21 +10,11 @@ const _ = db.command
 // 云函数入口函数
 exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext()
+    // 清除存在一个月以上的RSS数据
     db.collection("RSS_SOURCE").where({
-        id: _.neq(0)
+        // 待完成
     }).remove()
-    // try{
-    //     const err = await db.collection("RSS_SOURCE").add({
-    //     data:{
-    //         _id: "1",
-    //         e: "f"
-    //     }
-    // })
-    // }catch(err){
-    //     console.warn(err)
-    // }
     
-    // console.log(err instanceof Error)
     return {
         event,
         openid: wxContext.OPENID,
