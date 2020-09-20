@@ -19,6 +19,8 @@
         "checkSiteMap": true,
         "uploadWithSourceMap": true,
         "compileHotReLoad": false,
+        "useMultiFrameRuntime": false,
+        "useApiHook": true,
         "babelSetting": {
             "ignore": [],
             "disablePlugins": [],
@@ -28,9 +30,7 @@
         "useCompilerModule": true,
         "userConfirmedUseCompilerModuleSwitch": false,
         "packNpmManually": false,
-        "packNpmRelationList": [],
-        "useMultiFrameRuntime": false,
-        "useApiHook": true
+        "packNpmRelationList": []
     },
     "appid": "wx321969657c0297dc",
     "projectname": "AtomRSS",
