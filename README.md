@@ -9,17 +9,29 @@ RSS订阅小程序基于小程序云开发，因成本原因，暂未上线，�
 这个小程序本来是参加2020年腾讯小程序云开发大赛的，那段时间正值9月开学，我一直在准备开学的缓考，所以一直没有动工。初赛的提交截止时间是9月20日，我本以为提交代码就算完成了，于是赶工让这个项目于2020年9月19日完成，奈何云开发比赛还需要提交介绍文章及视频资料，所以果断放弃提交作品。最终还是让他开源吧，这个项目我会维护下去，现在仍有需要优化的细节。
 
 # 开发者预览版
-个人主页：
-![personal page.jpg](https://i.loli.net/2020/11/04/yUHsqLY9kVntIz5.jpg)
-订阅广场：
-![add srource link.jpg](https://i.loli.net/2020/11/04/scV32UdEyYuANFi.jpg)
-添加订阅链接：
-![add source link1.jpg](https://i.loli.net/2020/11/04/PyjoKDvAhB7ZEkH.jpg)
-订阅文章列表：
-![article list.jpg](https://i.loli.net/2020/11/04/6T3K4ciajEFzxqV.jpg)
-订阅内容：
-![post article.jpg](https://i.loli.net/2020/11/04/1J8BuLDIzNZfkld.jpg)
 
+<div style="display:flex">
+<div>
+个人主页：
+<img src= "https://i.loli.net/2020/11/04/yUHsqLY9kVntIz5.jpg" style="width:300px;"/>
+</div>
+<div>
+订阅广场：
+<img src= "https://i.loli.net/2020/11/04/scV32UdEyYuANFi.jpg" style="width:300px;"/>
+</div>
+<div>
+添加订阅链接：
+<img src= "https://i.loli.net/2020/11/04/PyjoKDvAhB7ZEkH.jpg" style="width:300px;"/>
+</div>
+<div>
+订阅文章列表：
+<img src= "https://i.loli.net/2020/11/04/6T3K4ciajEFzxqV.jpg" style="width:300px;"/>
+</div>
+<div>
+订阅内容：
+<img src= "https://i.loli.net/2020/11/04/1J8BuLDIzNZfkld.jpg" style="width:300px;"/>
+</div>
+</div>
 # 小程序架构图
 
 第一次画架构图，其实是相当于数据流的形式，后续可能会进行改进：
