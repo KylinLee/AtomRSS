@@ -10,28 +10,17 @@ RSS订阅小程序基于小程序云开发，因成本原因，暂未上线，�
 
 # 开发者预览版
 
-<div style="display:flex">
-<div>
-个人主页：
-<img src= "https://i.loli.net/2020/11/04/yUHsqLY9kVntIz5.jpg" style="width:300px;"/>
-</div>
-<div>
-订阅广场：
-<img src= "https://i.loli.net/2020/11/04/scV32UdEyYuANFi.jpg" style="width:300px;"/>
-</div>
-<div>
-添加订阅链接：
-<img src= "https://i.loli.net/2020/11/04/PyjoKDvAhB7ZEkH.jpg" style="width:300px;"/>
-</div>
-<div>
-订阅文章列表：
-<img src= "https://i.loli.net/2020/11/04/6T3K4ciajEFzxqV.jpg" style="width:300px;"/>
-</div>
-<div>
-订阅内容：
-<img src= "https://i.loli.net/2020/11/04/1J8BuLDIzNZfkld.jpg" style="width:300px;"/>
-</div>
-</div>
+个人主页： 
+<img src="https://i.loli.net/2020/11/04/yUHsqLY9kVntIz5.jpg" alt="personal page.jpg" style="zoom: 33%;" /> 
+订阅广场： 
+<img src="https://i.loli.net/2020/11/04/scV32UdEyYuANFi.jpg" alt="add srource link.jpg" style="zoom:33%;" /> 
+添加订阅链接： 
+<img src="https://i.loli.net/2020/11/04/PyjoKDvAhB7ZEkH.jpg" alt="add source link1.jpg" style="zoom:33%;" /> 
+订阅文章列表： 
+<img src="https://i.loli.net/2020/11/04/6T3K4ciajEFzxqV.jpg" alt="article list.jpg" style="zoom:33%;" /> 
+订阅内容： 
+<img src="https://i.loli.net/2020/11/04/1J8BuLDIzNZfkld.jpg" alt="post article.jpg" style="zoom:33%;" /> 
+
 # 小程序架构图
 
 第一次画架构图，其实是相当于数据流的形式，后续可能会进行改进：
