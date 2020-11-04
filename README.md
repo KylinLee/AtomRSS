@@ -10,16 +10,7 @@ RSS订阅小程序基于小程序云开发，因成本原因，暂未上线，�
 
 # 开发者预览版
 
-个人主页： 
-<img src="https://i.loli.net/2020/11/04/yUHsqLY9kVntIz5.jpg" alt="personal page.jpg" style="zoom: 33%;" /> 
-订阅广场： 
-<img src="https://i.loli.net/2020/11/04/scV32UdEyYuANFi.jpg" alt="add srource link.jpg" style="zoom:33%;" /> 
-添加订阅链接： 
-<img src="https://i.loli.net/2020/11/04/PyjoKDvAhB7ZEkH.jpg" alt="add source link1.jpg" style="zoom:33%;" /> 
-订阅文章列表： 
-<img src="https://i.loli.net/2020/11/04/6T3K4ciajEFzxqV.jpg" alt="article list.jpg" style="zoom:33%;" /> 
-订阅内容： 
-<img src="https://i.loli.net/2020/11/04/1J8BuLDIzNZfkld.jpg" alt="post article.jpg" style="zoom:33%;" /> 
+![小程序预览.png](https://i.loli.net/2020/11/04/TlqURcwCJSBdtAr.png)
 
 # 小程序架构图
 
@@ -29,21 +20,25 @@ RSS订阅小程序基于小程序云开发，因成本原因，暂未上线，�
 
 # 目录结构
 
+## 数据库
+- databse.md
+云开发数据库字段解释
+
 ## 云函数
 
-- add-source
+- cloudfunctions/add-source
 添加订阅
-- article
+- cloudfunctions/article
 单篇文章获取接口
-- clear-db
+- cloudfunctions/clear-db
 测试用，清除云开发数据库
-- clear-file
+- cloudfunctions/clear-file
 测试用，清除上传的图片
-- login
+- cloudfunctions/login
 登录接口，首次使用相当于注册
-- readlist
+- cloudfunctions/readlist
 阅读列表接口，返回用户未订阅的未读文章
-- rss-resolver
+- cloudfunctions/rss-resolver
 rss爬虫，定期爬取订阅源链接、处理、转存
 
 ## 小程序
